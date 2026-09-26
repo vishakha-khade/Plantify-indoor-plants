@@ -222,6 +222,70 @@
                 font-size: 34px;
             }
         }
+        .navbar {
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-button {
+    position: relative;
+    z-index: 1002;
+}
+
+.nav-links {
+    z-index: 1001;
+}
+
+.auth-image {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 900px) {
+
+    .navbar {
+        position: relative;
+        z-index: 1000;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: #f8f4e9;
+        z-index: 1001;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px;
+    }
+
+    .auth-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .auth-image {
+        z-index: 1;
+    }
+}
     </style>
 </head>
 
