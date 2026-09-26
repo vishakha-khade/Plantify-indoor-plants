@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plantify | Bring Nature Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                plant<span>ify</span>
+            </a>
+
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="pages/shop.html">Shop</a></li>
+                 <li><a href="pages/care.html">Plant Care</a></li>
+                 <li><a href="pages/about.html">About</a></li>
+                 <li><a href="pages/contact.html">Contact</a></li>
+                 <li><a href="pages/login.html" id="loginLink">Login</a></li>
+           </ul>
+
+        <a href="./pages/cart.html" class="nav-cart">
+             Cart <span id="cartCount">0</span>
+        </a>
+
+            <span id="userName"></span>
+
+        <button
+            id="logoutButton"
+            onclick="logoutUser()"
+            style="display: none;"
+            >
+            Logout
+        </button>
+
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">BOTANICAL LIVING · EST. 2026</p>
+
+                <h1>
+                    Bring a little
+                    <em>more green</em>
+                    into your everyday.
+                </h1>
+
+                <p class="hero-text">
+                    Thoughtfully selected indoor plants for
+                    calmer homes, brighter corners and
+                    greener beginnings.
+                </p>
+
+                <a href="pages/shop.html" class="main-button">
+                    Explore collection
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+                <span>01</span>
+                <p>Plants that<br>feel like home.</p>
+            </div>
+
+        </section>
+
+
+        <section class="intro-section">
+
+            <div>
+                <p class="eyebrow">OUR PHILOSOPHY</p>
+                <h2>Small spaces.<br><em>Big feeling.</em></h2>
+            </div>
+
+            <div class="intro-text">
+                <p>
+                    We believe a plant can change the feeling
+                    of a room. Plantify brings together
+                    beautiful, beginner-friendly plants with
+                    simple care guidance.
+                </p>
+
+                <a href="pages/about.html" class="text-link">
+                    Discover our story →
+                </a>
+            </div>
+
+        </section>
+
+
+        <section class="featured-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="eyebrow">CURATED FOR YOU</p>
+                    <h2>Green favourites</h2>
+                </div>
+
+                <a href="pages/shop.html" class="text-link">
+                    View all plants →
+                </a>
+
+            </div>
+
+            <div class="featured-grid">
+
+                <a href="pages/shop.html" class="featured-card large-card">
+
+                    <img src="assets/monsteraplant.jpg" alt="Monstera plant">
+
+                    <div class="image-overlay">
+                        <p>STATEMENT PLANT</p>
+                        <h3>Monstera<br>Deliciosa</h3>
+                    </div>
+
+                </a>
+
+                <a href="pages/shop.html" class="featured-card">
+
+                    <img src="assets/snake.jpg" alt="Snake plant">
+
+                    <div class="image-overlay">
+                        <p>EASY CARE</p>
+                        <h3>Snake<br>Plant</h3>
+                    </div>
+
+                </a>
+
+                <a href="pages/shop.html" class="featured-card">
+
+                    <img src="assets/peace-lily.jpg" alt="Peace lily">
+
+                    <div class="image-overlay">
+                        <p>SOFT & CALM</p>
+                        <h3>Peace<br>Lily</h3>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="split-section">
+
+            <div class="split-image">
+                <img src="assets/plant-shop.jpg" alt="Plant shop">
+            </div>
+
+            <div class="split-content">
+
+                <p class="eyebrow">PLANTIFY PROMISE</p>
+
+                <h2>
+                    Plants selected
+                    with <em>intention.</em>
+                </h2>
+
+                <p>
+                    Every plant in our collection is selected
+                    for its character, beauty and ability to
+                    thrive in real homes.
+                </p>
+
+                <a href="pages/care.html" class="main-button dark-button">
+                    Learn plant care
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="newsletter">
+
+            <p class="eyebrow">STAY IN THE LOOP</p>
+
+            <h2>More green.<br>Less guesswork.</h2>
+
+            <p>
+                Get simple plant-care tips and new arrivals
+                in your inbox.
+            </p>
+
+            <form onsubmit="subscribeUser(event)">
+
+                <input
+                    type="email"
+                    id="newsletterEmail"
+                    placeholder="Your email address"
+                >
+
+                <button type="submit">Join us</button>
+
+            </form>
+
+            <p id="newsletterMessage"></p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-brand">
+            <a href="index.html" class="logo">
+                plant<span>ify</span>
+            </a>
+
+            <p>
+                Making everyday spaces<br>
+                a little greener.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="pages/shop.html">Shop</a>
+            <a href="pages/care.html">Plant Care</a>
+            <a href="pages/about.html">About</a>
+            <a href="pages/contact.html">Contact</a>
+        </div>
+
+        <div>
+            <p>© 2026 Plantify</p>
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

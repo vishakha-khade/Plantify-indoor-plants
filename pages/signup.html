@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up - Plantify</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .auth-page {
+            min-height: 80vh;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #f8f4e9;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .auth-image {
+            min-height: 600px;
+            position: relative;
+        }
+
+        .auth-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-content {
+            position: absolute;
+            bottom: 35px;
+            left: 35px;
+            right: 35px;
+            color: white;
+        }
+
+        .image-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .image-content p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .auth-box {
+            padding: 55px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-box h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            color: #31543b;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .auth-intro {
+            text-align: center;
+            color: #66705f;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .auth-box label {
+            display: block;
+            color: #31543b;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .auth-box input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccd4c5;
+            border-radius: 9px;
+            background: white;
+            font-family: "DM Sans", sans-serif;
+            font-size: 15px;
+        }
+
+        .auth-box input:focus {
+            outline: none;
+            border-color: #31543b;
+        }
+
+        .auth-box button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #31543b;
+            color: white;
+            font-family: "DM Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .auth-box button:hover {
+            background: #263f2d;
+        }
+
+        .auth-bottom {
+            text-align: center;
+            color: #66705f;
+            margin-top: 25px;
+        }
+
+        .auth-bottom a {
+            color: #31543b;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 800px) {
+
+            .auth-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .auth-image {
+                min-height: 280px;
+            }
+
+            .auth-box {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .auth-page {
+                padding: 35px 15px;
+            }
+
+            .auth-image {
+                min-height: 240px;
+            }
+
+            .image-content {
+                left: 25px;
+                bottom: 25px;
+            }
+
+            .image-content h2 {
+                font-size: 30px;
+            }
+
+            .auth-box {
+                padding: 35px 22px;
+            }
+
+            .auth-box h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                plant<span>ify</span>
+            </a>
+
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="care.html">Plant Care</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+
+            <a href="cart.html" class="nav-cart">
+                Bag <span id="cartCount">0</span>
+            </a>
+
+        </nav>
+    </header>
+
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <div class="auth-image">
+
+                <img src="../assets/plant-shop.jpg" alt="Plantify plant shop">
+
+                <div class="image-content">
+                    <h2>Bring nature home.</h2>
+
+                    <p>
+                        Discover beautiful plants and create
+                        a calmer, greener space.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="auth-box">
+
+                <h1>Create Account</h1>
+
+                <p class="auth-intro">
+                    Join Plantify and start your green journey.
+                </p>
+
+                <form onsubmit="signupUser(event)">
+
+                    <label for="signupName">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="signupName"
+                        placeholder="Enter your full name"
+                    >
+
+                    <label for="signupEmail">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        placeholder="Enter your email"
+                    >
+
+                    <label for="signupPassword">Password</label>
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        placeholder="Create a password"
+                    >
+
+                    <button type="submit">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p class="auth-bottom">
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>

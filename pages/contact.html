@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plantify | Contact</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="logo">
+            plant<span>ify</span>
+        </a>
+
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="care.html">Plant Care</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+        <a href="shop.html" class="nav-cart">
+            Bag <span id="cartCount">0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<section class="page-hero contact-hero">
+
+    <div>
+
+        <p class="eyebrow">LET'S TALK</p>
+
+        <h1>Contact us.</h1>
+
+    </div>
+
+</section>
+
+
+<main class="contact-page">
+
+    <div class="contact-grid">
+
+        <div class="contact-info">
+
+            <p class="eyebrow">GET IN TOUCH</p>
+
+            <h2>
+                Have a plant
+                question?
+            </h2>
+
+            <p>
+                Tell us what you are looking for
+                and we will help you find the right plant.
+            </p>
+
+            <p>
+                hello@plantify.com
+            </p>
+
+        </div>
+
+
+        <form class="contact-form" onsubmit="submitContact(event)">
+
+            <input
+                type="text"
+                id="contactName"
+                placeholder="Your name"
+            >
+
+            <input
+                type="email"
+                id="contactEmail"
+                placeholder="Your email"
+            >
+
+            <textarea
+                id="contactText"
+                placeholder="Tell us what's on your mind..."
+            ></textarea>
+
+            <button type="submit">
+                Send message
+            </button>
+
+            <p id="contactMessage"></p>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-brand">
+
+        <a href="../index.html" class="logo">
+            plant<span>ify</span>
+        </a>
+
+        <p>
+            Making everyday spaces<br>
+            a little greener.
+        </p>
+
+    </div>
+
+    <div class="footer-links">
+
+        <a href="shop.html">Shop</a>
+        <a href="care.html">Plant Care</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div>
+        <p>© 2026 Plantify</p>
+    </div>
+
+</footer>
+
+
+<script src="../script.js"></script>
+
+</body>
+
+</html>
