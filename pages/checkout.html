@@ -79,22 +79,88 @@
                 padding: 25px;
             }
         }
+        .navbar {
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-button {
+    position: relative;
+    z-index: 1002;
+}
+
+.nav-links {
+    z-index: 1001;
+}
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: #f8f4e9;
+        z-index: 1001;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px;
+    }
+}
+
     </style>
 </head>
 
 <body>
 
-    <header>
-        <nav>
-            <h2>Plantify</h2>
+<header>
+    <nav class="navbar">
 
-            <a href="../index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
+        <a href="../index.html" class="logo">
+            plant<span>ify</span>
+        </a>
 
+        <button
+            class="menu-button"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
 
+        <ul class="nav-links" id="navLinks">
+
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a> </li>
+            <li><a href="care.html">Plant Care</a> </li>
+            <li><a href="about.html">About</a> </li>
+            <li><a href="contact.html">Contact</a> </li>
+            <li> <a href="account.html">My Account</a> </li>
+        </ul>
+
+        <a href="cart.html" class="nav-cart">
+            Bag <span id="cartCount">0</span>
+        </a>
+
+    </nav>
+
+</header>
     <main class="checkout-page">
 
         <h1>Checkout</h1>
@@ -105,9 +171,7 @@
 
             <form onsubmit="placeOrder(event)">
 
-                <label for="address">
-                    Delivery Address
-                </label>
+                <label for="address"> Delivery Address</label>
 
                 <textarea
                     id="address"
@@ -115,27 +179,17 @@
                 ></textarea>
 
 
-                <label for="payment">
-                    Payment Method
-                </label>
+                <label for="payment">Payment Method </label>
 
                 <select id="payment">
 
-                    <option value="">
-                        Select Payment Method
-                    </option>
+                    <option value=""> Select Payment Method</option>
 
-                    <option value="Cash on Delivery">
-                        Cash on Delivery
-                    </option>
+                    <option value="Cash on Delivery"> Cash on Delivery</option>
 
-                    <option value="UPI">
-                        UPI
-                    </option>
+                    <option value="UPI"> UPI= </option>
 
-                    <option value="Card">
-                        Debit / Credit Card
-                    </option>
+                    <option value="Card">Debit / Credit Card </option>
 
                 </select>
 

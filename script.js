@@ -1,10 +1,7 @@
 let cart = JSON.parse(localStorage.getItem("plantCart")) || [];
-
 let users = JSON.parse(localStorage.getItem("plantUsers")) || [];
-
 let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
-
-// Plant products
+let orders = JSON.parse(localStorage.getItem("plantOrders")) || [];
 
 const plants = [
     {
@@ -45,10 +42,7 @@ const plants = [
     }
 ];
 
-// Mobile menu
-
 function toggleMenu() {
-
     const nav = document.getElementById("navLinks");
 
     if (nav) {
@@ -56,10 +50,7 @@ function toggleMenu() {
     }
 }
 
-// Cart count
-
 function updateCartCount() {
-
     const cartCount = document.getElementById("cartCount");
 
     if (cartCount) {
@@ -67,10 +58,7 @@ function updateCartCount() {
     }
 }
 
-// Shop products
-
 function displayPlants(list) {
-
     const productGrid = document.getElementById("productGrid");
 
     if (!productGrid) {
@@ -82,7 +70,6 @@ function displayPlants(list) {
     for (let i = 0; i < list.length; i++) {
 
         const plant = list[i];
-
         const originalIndex = plants.indexOf(plant);
 
         productGrid.innerHTML += `
@@ -115,22 +102,21 @@ function displayPlants(list) {
 
 displayPlants(plants);
 
-// Add to cart
-
 function addToCart(index) {
 
     const selectedPlant = plants[index];
 
     cart.push(selectedPlant);
 
-    localStorage.setItem("plantCart", JSON.stringify(cart));
+    localStorage.setItem(
+        "plantCart",
+        JSON.stringify(cart)
+    );
 
     updateCartCount();
 
     alert(selectedPlant.name + " added to your bag!");
 }
-
-// Search
 
 function searchPlants() {
 
@@ -144,18 +130,19 @@ function searchPlants() {
 
     const result = plants.filter(function(plant) {
 
-        return plant.name.toLowerCase().includes(value);
+        return plant.name
+            .toLowerCase()
+            .includes(value);
 
     });
 
     displayPlants(result);
 }
 
-// Category filter
-
 function filterPlants() {
 
-    const category = document.getElementById("categoryFilter").value;
+    const category =
+        document.getElementById("categoryFilter").value;
 
     if (category == "All") {
 
@@ -173,11 +160,10 @@ function filterPlants() {
     }
 }
 
-// Price sorting
-
 function sortPlants() {
 
-    const sortValue = document.getElementById("sortPlants").value;
+    const sortValue =
+        document.getElementById("sortPlants").value;
 
     let sortedPlants = [...plants];
 
@@ -197,47 +183,55 @@ function sortPlants() {
     displayPlants(sortedPlants);
 }
 
-// Newsletter
-
 function subscribeUser(event) {
 
     event.preventDefault();
 
-    const email = document.getElementById("newsletterEmail").value;
+    const email =
+        document.getElementById("newsletterEmail").value;
 
-    const message = document.getElementById("newsletterMessage");
+    const message =
+        document.getElementById("newsletterMessage");
 
     if (email == "") {
 
-        message.innerHTML = "Please enter your email.";
+        message.innerHTML =
+            "Please enter your email.";
 
     } else {
 
-        message.innerHTML = "Thank you for joining Plantify!";
+        message.innerHTML =
+            "Thank you for joining Plantify!";
 
         document.getElementById("newsletterEmail").value = "";
     }
 }
 
-// Contact form
-
 function submitContact(event) {
 
     event.preventDefault();
 
-    const name = document.getElementById("contactName").value;
-    const email = document.getElementById("contactEmail").value;
-    const message = document.getElementById("contactText").value;
+    const name =
+        document.getElementById("contactName").value;
 
-    const result = document.getElementById("contactMessage");
+    const email =
+        document.getElementById("contactEmail").value;
+
+    const message =
+        document.getElementById("contactText").value;
+
+    const result =
+        document.getElementById("contactMessage");
 
     if (name == "" || email == "" || message == "") {
 
-        result.innerHTML = "Please fill all the fields.";
+        result.innerHTML =
+            "Please fill all the fields.";
 
     } else {
 
-        result.innerHTML = "Thank you! Your message has been submitted successfully.";
+        result.innerHTML =
+            "Thank you! Your message has been submitted successfully.";
 
         document.getElementById("contactName").value = "";
         document.getElementById("contactEmail").value = "";
@@ -245,11 +239,10 @@ function submitContact(event) {
     }
 }
 
-// Plant recommendation
-
 function recommendPlant(type) {
 
-    const result = document.getElementById("quizResult");
+    const result =
+        document.getElementById("quizResult");
 
     if (!result) {
         return;
@@ -273,20 +266,24 @@ function recommendPlant(type) {
 }
 
 
-// SIGN UP
+/* SIGN UP */
 
 function signupUser(event) {
 
     event.preventDefault();
 
-    const name = document.getElementById("signupName").value;
-    const email = document.getElementById("signupEmail").value;
-    const password = document.getElementById("signupPassword").value;
+    const name =
+        document.getElementById("signupName").value;
+
+    const email =
+        document.getElementById("signupEmail").value;
+
+    const password =
+        document.getElementById("signupPassword").value;
 
     if (name == "" || email == "" || password == "") {
 
         alert("Please fill all the fields.");
-
         return;
     }
 
@@ -295,12 +292,12 @@ function signupUser(event) {
         if (users[i].email == email) {
 
             alert("This email is already registered.");
-
             return;
         }
     }
 
     const newUser = {
+
         name: name,
         email: email,
         password: password
@@ -308,21 +305,28 @@ function signupUser(event) {
 
     users.push(newUser);
 
-    localStorage.setItem("plantUsers", JSON.stringify(users));
+    localStorage.setItem(
+        "plantUsers",
+        JSON.stringify(users)
+    );
 
     alert("Account created successfully!");
 
     window.location.href = "login.html";
 }
 
-// LOGIN
+
+/* LOGIN */
 
 function loginUser(event) {
 
     event.preventDefault();
 
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
+    const email =
+        document.getElementById("loginEmail").value;
+
+    const password =
+        document.getElementById("loginPassword").value;
 
     let foundUser = null;
 
@@ -334,7 +338,6 @@ function loginUser(event) {
         ) {
 
             foundUser = users[i];
-
             break;
         }
     }
@@ -348,7 +351,7 @@ function loginUser(event) {
 
         alert("Login successful!");
 
-        window.location.href = "../index.html";
+        window.location.href = "account.html";
 
     } else {
 
@@ -356,26 +359,33 @@ function loginUser(event) {
     }
 }
 
-// LOGOUT
+
+/* LOGOUT */
 
 function logoutUser() {
 
     localStorage.removeItem("currentUser");
 
+    currentUser = null;
+
     alert("You have been logged out.");
 
-    window.location.reload();
+    window.location.href = "../index.html";
 }
 
-// USER STATUS
+
+/* USER STATUS */
 
 function checkLogin() {
 
-    const loginLink = document.getElementById("loginLink");
+    const loginLink =
+        document.getElementById("loginLink");
 
-    const logoutButton = document.getElementById("logoutButton");
+    const logoutButton =
+        document.getElementById("logoutButton");
 
-    const userName = document.getElementById("userName");
+    const userName =
+        document.getElementById("userName");
 
     if (currentUser) {
 
@@ -388,7 +398,12 @@ function checkLogin() {
         }
 
         if (userName) {
-            userName.innerHTML = "Hi, " + currentUser.name;
+
+            const firstName =
+                currentUser.name.split(" ")[0];
+
+            userName.innerHTML =
+                "Hi, " + firstName;
         }
 
     } else {
@@ -399,13 +414,16 @@ function checkLogin() {
     }
 }
 
-// DISPLAY CART
+
+/* CART */
 
 function displayCart() {
 
-    const cartItems = document.getElementById("cartItems");
+    const cartItems =
+        document.getElementById("cartItems");
 
-    const totalPrice = document.getElementById("totalPrice");
+    const totalPrice =
+        document.getElementById("totalPrice");
 
     if (!cartItems) {
         return;
@@ -417,7 +435,8 @@ function displayCart() {
 
     if (cart.length == 0) {
 
-        cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        cartItems.innerHTML =
+            "<p class='empty-cart'>Your cart is empty.</p>";
 
         if (totalPrice) {
             totalPrice.innerHTML = "₹0";
@@ -431,9 +450,13 @@ function displayCart() {
         total = total + cart[i].price;
 
         cartItems.innerHTML += `
+
             <div class="cart-item">
 
-                <img src="${cart[i].image}" alt="${cart[i].name}">
+                <img
+                    src="${cart[i].image}"
+                    alt="${cart[i].name}"
+                >
 
                 <div class="cart-item-info">
 
@@ -443,13 +466,26 @@ function displayCart() {
 
                     <strong>₹${cart[i].price}</strong>
 
-                    <br><br>
+                    <div class="cart-actions">
 
-                    <button onclick="removeFromCart(${i})">
-                        Remove
-                    </button>
+                        <button
+                            onclick="buyNow(${i})"
+                            class="buy-button"
+                        >
+                            Buy Now
+                        </button>
+
+                        <button
+                            onclick="removeFromCart(${i})"
+                            class="remove-button"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
 
                 </div>
+
             </div>
         `;
     }
@@ -459,19 +495,52 @@ function displayCart() {
     }
 }
 
-// Remove cart item
+
+/* REMOVE ONE ITEM */
 
 function removeFromCart(index) {
+
     cart.splice(index, 1);
 
-    localStorage.setItem("plantCart", JSON.stringify(cart));
+    localStorage.setItem(
+        "plantCart",
+        JSON.stringify(cart)
+    );
 
     displayCart();
 
     updateCartCount();
 }
 
-// CHECKOUT
+
+/* BUY ONE ITEM */
+
+function buyNow(index) {
+
+    if (!currentUser) {
+
+        alert("Please login before buying.");
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+    localStorage.setItem(
+        "checkoutItem",
+        index
+    );
+
+    localStorage.setItem(
+        "checkoutType",
+        "single"
+    );
+
+    window.location.href = "checkout.html";
+}
+
+
+/* CHECKOUT ALL */
 
 function goToCheckout() {
 
@@ -486,13 +555,87 @@ function goToCheckout() {
         alert("Please login before checkout.");
 
         window.location.href = "login.html";
+
         return;
     }
+
+    localStorage.removeItem("checkoutItem");
+
+    localStorage.setItem(
+        "checkoutType",
+        "all"
+    );
 
     window.location.href = "checkout.html";
 }
 
-// PLACE ORDER
+
+/* CHECKOUT PAGE */
+
+function displayCheckout() {
+
+    const checkoutItems =
+        document.getElementById("checkoutItems");
+
+    const checkoutTotal =
+        document.getElementById("checkoutTotal");
+
+    if (!checkoutItems) {
+        return;
+    }
+
+    checkoutItems.innerHTML = "";
+
+    let checkoutCart = [];
+
+    const checkoutType =
+        localStorage.getItem("checkoutType");
+
+    if (checkoutType == "single") {
+
+        const index =
+            Number(localStorage.getItem("checkoutItem"));
+
+        if (cart[index]) {
+            checkoutCart.push(cart[index]);
+        }
+
+    } else {
+
+        checkoutCart = cart;
+    }
+
+    let total = 0;
+
+    for (let i = 0; i < checkoutCart.length; i++) {
+
+        total =
+            total + checkoutCart[i].price;
+
+        checkoutItems.innerHTML += `
+
+            <div class="checkout-item">
+
+                <img
+                    src="${checkoutCart[i].image}"
+                    alt="${checkoutCart[i].name}"
+                >
+
+                <div>
+                    <h3>${checkoutCart[i].name}</h3>
+                    <p>${checkoutCart[i].type}</p>
+                    <strong>₹${checkoutCart[i].price}</strong>
+                </div>
+
+            </div>
+        `;
+    }
+
+    checkoutTotal.innerHTML =
+        "₹" + total;
+}
+
+/* PLACE ORDER */
 
 function placeOrder(event) {
 
@@ -504,62 +647,184 @@ function placeOrder(event) {
         return;
     }
 
-    if (cart.length == 0) {
+    const address =
+        document.getElementById("address").value;
 
-        alert("Your cart is empty.");
-        return;
-    }
-
-    const address = document.getElementById("address").value;
-    const payment = document.getElementById("payment").value;
+    const payment =
+        document.getElementById("payment").value;
 
     if (address == "" || payment == "") {
 
         alert("Please fill all the details.");
-
         return;
+    }
+
+    const checkoutType =
+        localStorage.getItem("checkoutType");
+
+    let orderedItems = [];
+
+    if (checkoutType == "single") {
+
+        const index =
+            Number(localStorage.getItem("checkoutItem"));
+
+        if (cart[index]) {
+
+            orderedItems.push(cart[index]);
+
+            cart.splice(index, 1);
+        }
+
+    } else {
+
+        orderedItems = [...cart];
+
+        cart = [];
     }
 
     let total = 0;
 
-    for (let i = 0; i < cart.length; i++) {
+    for (let i = 0; i < orderedItems.length; i++) {
 
-        total = total + cart[i].price;
+        total =
+            total + orderedItems[i].price;
     }
 
     const order = {
 
         user: currentUser.email,
 
-        items: cart,
+        items: orderedItems,
 
         total: total,
 
         address: address,
 
-        payment: payment
+        payment: payment,
+
+        date: new Date().toLocaleString()
     };
 
-    localStorage.setItem(
-        "plantOrder",
-        JSON.stringify(order)
-    );
+    orders.push(order);
 
-    cart = [];
+    localStorage.setItem(
+        "plantOrders",
+        JSON.stringify(orders)
+    );
 
     localStorage.setItem(
         "plantCart",
         JSON.stringify(cart)
     );
 
+    localStorage.removeItem("checkoutItem");
+    localStorage.removeItem("checkoutType");
+
     alert("Your order has been placed successfully!");
 
-    window.location.href = "../index.html";
+    window.location.href = "account.html";
 }
 
-// START FUNCTIONS
 
+/* ACCOUNT */
+
+function displayAccount() {
+
+    const accountName =
+        document.getElementById("accountName");
+
+    const accountEmail =
+        document.getElementById("accountEmail");
+
+    const accountCartCount =
+        document.getElementById("accountCartCount");
+
+    const accountCartTotal =
+        document.getElementById("accountCartTotal");
+
+    const orderList =
+        document.getElementById("orderList");
+
+    if (!accountName) {
+        return;
+    }
+
+    if (!currentUser) {
+
+        window.location.href = "login.html";
+        return;
+    }
+
+    const firstName =
+        currentUser.name.split(" ")[0];
+
+    accountName.innerHTML =
+        firstName;
+
+    accountEmail.innerHTML =
+        currentUser.email;
+
+    accountCartCount.innerHTML =
+        cart.length;
+
+    let cartTotal = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+
+        cartTotal =
+            cartTotal + cart[i].price;
+    }
+
+    accountCartTotal.innerHTML =
+        "₹" + cartTotal;
+
+    const userOrders =
+        orders.filter(function(order) {
+
+            return order.user == currentUser.email;
+
+        });
+
+    orderList.innerHTML = "";
+
+    if (userOrders.length == 0) {
+
+        orderList.innerHTML =
+            "<p>No orders yet.</p>";
+
+    } else {
+
+        for (let i = userOrders.length - 1; i >= 0; i--) {
+
+            orderList.innerHTML += `
+
+                <div class="order-card">
+
+                    <h3>Order ${userOrders.length - i}</h3>
+
+                    <p>
+                        Date: ${userOrders[i].date}
+                    </p>
+
+                    <p>
+                        Items: ${userOrders[i].items.length}
+                    </p>
+
+                    <strong>
+                        Total: ₹${userOrders[i].total}
+                    </strong>
+
+                </div>
+            `;
+        }
+    }
+}
+
+/* START */
 
 updateCartCount();
 displayCart();
+displayCheckout();
+displayAccount();
 checkLogin();
