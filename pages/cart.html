@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>My Cart - Plantify</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
 
     <style>
+
+        /* Cart page */
+
         .cart-page {
-            max-width: 1000px;
+            max-width: 1150px;
             margin: auto;
-            padding: 60px 20px;
+            padding: 70px 25px 90px;
         }
 
-        .cart-page h1 {
+        .cart-heading {
             text-align: center;
-            color: #31543b;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
-        h2{
-            font-size: x-large;
-            text-align: center;
+
+        .cart-heading p {
+            color: #66705f;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .cart-heading h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 48px;
+            color: #31543b;
+            margin: 0;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 30px;
+            align-items: start;
         }
 
         #cartItems {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
 
         .cart-item {
@@ -37,109 +63,404 @@
             gap: 25px;
             padding: 20px;
             background: #f8f4e9;
-            border-radius: 15px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
         }
 
         .cart-item img {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 14px;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex: 1;
         }
 
         .cart-item-info h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
             color: #31543b;
-            margin-bottom: 8px;
+            margin: 0 0 8px;
         }
 
         .cart-item-info p {
             color: #66705f;
+            margin: 0 0 10px;
         }
 
-        .cart-item-info button {
-            padding: 8px 14px;
+        .cart-item-info strong {
+            display: block;
+            color: #31543b;
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .cart-actions button {
+            padding: 10px 18px;
             border: none;
-            border-radius: 6px;
-            background: #b85c5c;
-            color: white;
+            border-radius: 8px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 600;
             cursor: pointer;
+            transition: 0.2s;
         }
 
-        .cart-summary {
-            margin-top: 30px;
-            padding: 25px;
+        .buy-button {
             background: #31543b;
             color: white;
-            border-radius: 15px;
-            text-align: right;
+        }
+
+        .buy-button:hover {
+            background: #263f2d;
+        }
+
+        .remove-button {
+            background: #e9c9c9;
+            color: #8d4444;
+        }
+
+        .remove-button:hover {
+            background: #ddb5b5;
+        }
+
+        /* Summary */
+
+        .cart-summary {
+            background: #31543b;
+            color: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 30px;
+        }
+
+        .cart-summary h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            margin: 0 0 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #e9eee8;
+        }
+
+        .summary-total {
+            border-top: 1px solid rgba(255,255,255,0.25);
+            padding-top: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .cart-summary button {
-            padding: 12px 20px;
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
             border: none;
-            border-radius: 8px;
+            border-radius: 9px;
             background: #f8f4e9;
             color: #31543b;
-            font-weight: bold;
+            font-family: "DM Sans", sans-serif;
+            font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
         }
-        button{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+        .cart-summary button:hover {
+            background: white;
         }
 
+        .empty-cart {
+            background: #f8f4e9;
+            padding: 50px 20px;
+            border-radius: 18px;
+            text-align: center;
+            color: #66705f;
+        }
+
+
+        /* Responsive */
+
+        @media (max-width: 850px) {
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+
+        }
+
+
         @media (max-width: 600px) {
+
+            .cart-page {
+                padding: 45px 15px 60px;
+            }
+
+            .cart-heading {
+                margin-bottom: 30px;
+            }
+
+            .cart-heading h1 {
+                font-size: 38px;
+            }
 
             .cart-item {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 15px;
             }
 
             .cart-item img {
                 width: 100%;
-                height: 200px;
+                height: 230px;
             }
+
+            .cart-item-info {
+                width: 100%;
+            }
+
+            .cart-item-info h3 {
+                font-size: 22px;
+            }
+
+            .cart-actions {
+                width: 100%;
+            }
+
+            .cart-actions button {
+                flex: 1;
+            }
+
+            .cart-summary {
+                padding: 25px 20px;
+            }
+
         }
+
+
+        /* Mobile navbar fix */
+
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .menu-button {
+            position: relative;
+            z-index: 1002;
+        }
+
+        .nav-links {
+            z-index: 1001;
+        }
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background: #f8f4e9;
+                z-index: 1001;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 8px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <header>
-        <nav>
-            <h2>Plantify</h2>
 
-            <a href="../index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="login.html">Login</a>
+    <!-- Navbar -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                plant<span>ify</span>
+            </a>
+
+            <button
+                class="menu-button"
+                onclick="toggleMenu()"
+            >
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="shop.html">Shop</a>
+                </li>
+
+                <li>
+                    <a href="care.html">Plant Care</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+                <li>
+                    <a href="account.html">My Account</a>
+                </li>
+
+            </ul>
+
+            <a href="cart.html" class="nav-cart">
+                Bag <span id="cartCount">0</span>
+            </a>
+
         </nav>
+
     </header>
 
 
     <main class="cart-page">
 
-        <h1>My Cart</h1>
 
-        <div id="cartItems"></div>
+        <div class="cart-heading">
 
-        <div class="cart-summary">
+            <p>YOUR PLANTIFY BAG</p>
 
-            <h2>
-                Total: <span id="totalPrice">₹0</span>
-            </h2>
-
-            <button onclick="goToCheckout()">
-                Proceed to Checkout
-            </button>
+            <h1>My Cart</h1>
 
         </div>
+
+
+        <div class="cart-layout">
+
+
+            <div id="cartItems"></div>
+
+
+            <div class="cart-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+
+                    <span>Items</span>
+
+                    <span id="summaryItems">0</span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>Delivery</span>
+
+                    <span>FREE</span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>GST</span>
+
+                    <span>₹0</span>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>Total</span>
+
+                    <span id="totalPrice">₹0</span>
+
+                </div>
+
+
+                <button onclick="goToCheckout()">
+                    Proceed to Checkout
+                </button>
+
+            </div>
+
+
+        </div>
+
 
     </main>
 
 
     <script src="../script.js"></script>
 
+
+    <script>
+
+        /* Update item count in order summary */
+
+        function updateSummaryItems() {
+
+            const summaryItems =
+                document.getElementById("summaryItems");
+
+            if (summaryItems) {
+
+                summaryItems.innerHTML =
+                    cart.length;
+
+            }
+
+        }
+        updateSummaryItems();
+
+    </script>
 </body>
 </html>
