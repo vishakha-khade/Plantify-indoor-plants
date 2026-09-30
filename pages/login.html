@@ -1,437 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Login - Plantify</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
 
     <style>
+      .auth-page {
+        min-height: calc(100vh - 90px);
+        padding: 60px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+
+      .auth-container {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #f8f4e9;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      }
+
+      .auth-image {
+        position: relative;
+        min-height: 600px;
+      }
+
+      .auth-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(20, 45, 28, 0.75),
+          rgba(20, 45, 28, 0.05)
+        );
+      }
+
+      .image-content {
+        position: absolute;
+        left: 50px;
+        bottom: 50px;
+        color: white;
+        max-width: 450px;
+      }
+
+      .image-content span {
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+
+      .image-content h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 48px;
+        line-height: 1.1;
+        margin: 12px 0;
+      }
+
+      .image-content p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .auth-box {
+        padding: 60px 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .auth-box .small-title {
+        text-align: center;
+        color: #66705f;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .auth-box h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 44px;
+        color: #31543b;
+        text-align: center;
+        margin-bottom: 12px;
+      }
+
+      .auth-intro {
+        text-align: center;
+        color: #66705f;
+        line-height: 1.6;
+        margin-bottom: 35px;
+      }
+
+      .auth-box label {
+        display: block;
+        color: #31543b;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .auth-box input {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 22px;
+        box-sizing: border-box;
+        border: 1px solid #ccd4c5;
+        border-radius: 10px;
+        background: white;
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+      }
+
+      .auth-box input:focus {
+        outline: none;
+        border-color: #31543b;
+        box-shadow: 0 0 0 3px rgba(49, 84, 59, 0.08);
+      }
+
+      .auth-box button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background: #31543b;
+        color: white;
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 5px;
+        transition: 0.3s;
+      }
+
+      .auth-box button:hover {
+        background: #263f2d;
+        transform: translateY(-2px);
+      }
+
+      .auth-bottom {
+        text-align: center;
+        color: #66705f;
+        margin-top: 28px;
+      }
+
+      .auth-bottom a {
+        color: #31543b;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .auth-bottom a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 900px) {
         .auth-page {
-            min-height: calc(100vh - 90px);
-            padding: 60px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
+          padding: 40px 25px;
         }
 
         .auth-container {
-            width: 100%;
-            max-width: 1200px;
-            min-height: 600px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: #f8f4e9;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+          grid-template-columns: 1fr;
+          max-width: 600px;
         }
 
         .auth-image {
-            position: relative;
-            min-height: 600px;
-        }
-
-        .auth-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(20, 45, 28, 0.75),
-                rgba(20, 45, 28, 0.05)
-            );
-        }
-
-        .image-content {
-            position: absolute;
-            left: 50px;
-            bottom: 50px;
-            color: white;
-            max-width: 450px;
-        }
-
-        .image-content span {
-            font-size: 13px;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .image-content h2 {
-            font-family: "Playfair Display", serif;
-            font-size: 48px;
-            line-height: 1.1;
-            margin: 12px 0;
-        }
-
-        .image-content p {
-            font-size: 16px;
-            line-height: 1.6;
+          min-height: 350px;
         }
 
         .auth-box {
-            padding: 60px 70px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+          padding: 45px 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .auth-page {
+          padding: 25px 15px;
         }
 
-        .auth-box .small-title {
-            text-align: center;
-            color: #66705f;
-            letter-spacing: 2px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
+        .auth-image {
+          min-height: 280px;
+        }
+
+        .image-content {
+          left: 25px;
+          bottom: 25px;
+        }
+
+        .image-content h2 {
+          font-size: 34px;
+        }
+
+        .auth-box {
+          padding: 35px 25px;
         }
 
         .auth-box h1 {
-            font-family: "Playfair Display", serif;
-            font-size: 44px;
-            color: #31543b;
-            text-align: center;
-            margin-bottom: 12px;
+          font-size: 34px;
         }
-
-        .auth-intro {
-            text-align: center;
-            color: #66705f;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-
-        .auth-box label {
-            display: block;
-            color: #31543b;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .auth-box input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 22px;
-            box-sizing: border-box;
-            border: 1px solid #ccd4c5;
-            border-radius: 10px;
-            background: white;
-            font-family: "DM Sans", sans-serif;
-            font-size: 15px;
-        }
-
-        .auth-box input:focus {
-            outline: none;
-            border-color: #31543b;
-            box-shadow: 0 0 0 3px rgba(49, 84, 59, 0.08);
-        }
-
-        .auth-box button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #31543b;
-            color: white;
-            font-family: "DM Sans", sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 5px;
-            transition: 0.3s;
-        }
-
-        .auth-box button:hover {
-            background: #263f2d;
-            transform: translateY(-2px);
-        }
-
-        .auth-bottom {
-            text-align: center;
-            color: #66705f;
-            margin-top: 28px;
-        }
-
-        .auth-bottom a {
-            color: #31543b;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .auth-bottom a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 900px) {
-
-            .auth-page {
-                padding: 40px 25px;
-            }
-
-            .auth-container {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-            }
-
-            .auth-image {
-                min-height: 350px;
-            }
-
-            .auth-box {
-                padding: 45px 40px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .auth-page {
-                padding: 25px 15px;
-            }
-
-            .auth-image {
-                min-height: 280px;
-            }
-
-            .image-content {
-                left: 25px;
-                bottom: 25px;
-            }
-
-            .image-content h2 {
-                font-size: 34px;
-            }
-
-            .auth-box {
-                padding: 35px 25px;
-            }
-
-            .auth-box h1 {
-                font-size: 34px;
-            }
-        }
-        .navbar {
-    position: relative;
-    z-index: 1000;
-}
-
-.menu-button {
-    position: relative;
-    z-index: 1002;
-}
-
-.nav-links {
-    z-index: 1001;
-}
-
-.auth-image {
-    position: relative;
-    z-index: 1;
-}
-
-@media (max-width: 900px) {
-
-    .navbar {
+      }
+      .navbar {
         position: relative;
         z-index: 1000;
-    }
+      }
 
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background: #f8f4e9;
+      .menu-button {
+        position: relative;
+        z-index: 1002;
+      }
+
+      .nav-links {
         z-index: 1001;
-        padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    }
+      }
 
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 8px;
-    }
-
-    .auth-container {
+      .auth-image {
         position: relative;
         z-index: 1;
-    }
+      }
 
-    .auth-image {
-        z-index: 1;
-    }
-}
+      @media (max-width: 900px) {
+        .navbar {
+          position: relative;
+          z-index: 1000;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          width: 100%;
+          background: #f8f4e9;
+          z-index: 1001;
+          padding: 20px 0;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-links.active {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 18px;
+        }
+
+        .nav-links li {
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 8px;
+        }
+
+        .auth-container {
+          position: relative;
+          z-index: 1;
+        }
+
+        .auth-image {
+          z-index: 1;
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header>
+      <nav class="navbar">
+        <a href="../index.html" class="logo"> plant<span>ify</span> </a>
 
-        <nav class="navbar">
+        <button class="menu-button" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
-            <a href="../index.html" class="logo">
-                plant<span>ify</span>
-            </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="care.html">Plant Care</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
 
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <a href="cart.html" class="nav-cart">
+          <span>Cart</span>
 
-            <ul class="nav-links" id="navLinks">
+          <b id="cartCount">0</b>
+        </a>
 
-                <li>
-                    <a href="../index.html">Home</a>
-                </li>
+        <div class="profile">
+          <a
+            href="account.html"
+            class="profile-button"
+            style="text-decoration: none"
+          >
+            <i class="fa-regular fa-circle-user"></i>
+            <span id="profileName">Account</span>
+          </a>
 
-                <li>
-                    <a href="shop.html">Shop</a>
-                </li>
+          <div class="profile-menu" id="profileMenu">
+            <p id="profileUserName">Welcome</p>
 
-                <li>
-                    <a href="care.html">Plant Care</a>
-                </li>
+            <a href="account.html"> My Account </a>
 
-                <li>
-                    <a href="about.html">About</a>
-                </li>
+            <a href="login.html" id="profileLogin"> Login </a>
 
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-
-                <li>
-                    <a href="login.html">Login</a>
-                </li>
-
-            </ul>
-
-            <a href="cart.html" class="nav-cart">
-                Bag <span id="cartCount">0</span>
-            </a>
-
-        </nav>
-
-    </header>
-
-
-    <main class="auth-page">
-
-        <div class="auth-container">
-
-            <div class="auth-image">
-
-                <img
-                    src="../assets/plant-shop.jpg"
-                    alt="Plantify plant shop"
-                >
-
-                <div class="image-overlay"></div>
-
-                <div class="image-content">
-
-                    <span>WELCOME TO PLANTIFY</span>
-
-                    <h2>
-                        A greener space
-                        starts here.
-                    </h2>
-
-                    <p>
-                        Sign in to explore your plants,
-                        manage your bag and continue
-                        your green journey.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="auth-box">
-
-                <p class="small-title">
-                    YOUR GREEN SPACE
-                </p>
-
-                <h1>Welcome Back</h1>
-
-                <p class="auth-intro">
-                    Login to your Plantify account
-                    and continue exploring.
-                </p>
-
-
-                <form onsubmit="loginUser(event)">
-
-                    <label for="loginEmail">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="loginEmail"
-                        placeholder="Enter your email"
-                    >
-
-
-                    <label for="loginPassword">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Enter your password"
-                    >
-
-
-                    <button type="submit">
-                        Login to Plantify
-                    </button>
-
-                </form>
-
-
-                <p class="auth-bottom">
-
-                    Don't have an account?
-
-                    <a href="signup.html">
-                        Create Account
-                    </a>
-
-                </p>
-
-            </div>
+            <button id="profileLogout" onclick="logoutUser()">Logout</button>
+          </div>
         </div>
+      </nav>
+    </header>
+    <main class="auth-page">
+      <div class="auth-container">
+        <div class="auth-image">
+          <img src="../assets/plant-shop.jpg" alt="Plantify plant shop" />
+
+          <div class="image-overlay"></div>
+
+          <div class="image-content">
+            <span>WELCOME TO PLANTIFY</span>
+
+            <h2>A greener space starts here.</h2>
+
+            <p>
+              Sign in to explore your plants, manage your bag and continue your
+              green journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="auth-box">
+          <p class="small-title">YOUR GREEN SPACE</p>
+
+          <h1>Welcome Back</h1>
+
+          <p class="auth-intro">
+            Login to your Plantify account and continue exploring.
+          </p>
+
+          <form onsubmit="loginUser(event)">
+            <label for="loginEmail"> Email Address </label>
+
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Enter your email"
+            />
+
+            <label for="loginPassword"> Password </label>
+
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Enter your password"
+            />
+
+            <button type="submit">Login to Plantify</button>
+          </form>
+
+          <p class="auth-bottom">
+            Don't have an account?
+
+            <a href="signup.html"> Create Account </a>
+          </p>
+        </div>
+      </div>
     </main>
 
     <script src="../script.js"></script>
-
-</body>
-
+  </body>
 </html>

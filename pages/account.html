@@ -1,323 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>My Account - Plantify</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
 
     <style>
+      .account-page {
+        max-width: 1150px;
+        margin: auto;
+        padding: 60px 20px;
+      }
 
-        .account-page {
-            max-width: 1150px;
-            margin: auto;
-            padding: 60px 20px;
-        }
+      .account-heading {
+        margin-bottom: 40px;
+      }
 
-        .account-heading {
-            margin-bottom: 40px;
-        }
+      .account-heading p {
+        color: #66705f;
+      }
 
-        .account-heading p {
-            color: #66705f;
+      .account-heading h1 {
+        font-family: "Playfair Display", serif;
+        color: #31543b;
+        font-size: 42px;
+      }
+
+      .account-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 25px;
+      }
+
+      .account-card {
+        background: #f8f4e9;
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      }
+
+      .account-card h2 {
+        color: #31543b;
+        margin-bottom: 20px;
+      }
+
+      .account-name {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        color: #31543b;
+      }
+
+      .account-email {
+        color: #66705f;
+        margin-top: 8px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .stat-box {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .stat-box strong {
+        display: block;
+        font-size: 24px;
+        color: #31543b;
+        margin-bottom: 5px;
+      }
+
+      .stat-box span {
+        color: #66705f;
+        font-size: 14px;
+      }
+
+      .order-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #e1e5db;
+      }
+
+      .order-card h3 {
+        color: #31543b;
+        margin-bottom: 8px;
+      }
+
+      .order-card p {
+        color: #66705f;
+        margin-bottom: 5px;
+      }
+
+      .account-buttons {
+        margin-top: 25px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .account-buttons a,
+      .logout-btn {
+        padding: 12px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .shop-btn {
+        background: #31543b;
+        color: white;
+      }
+
+      .cart-btn {
+        background: white;
+        color: #31543b;
+        border: 1px solid #31543b !important;
+      }
+
+      .logout-btn {
+        background: #b85c5c;
+        color: white;
+      }
+
+      @media (max-width: 800px) {
+        .account-grid {
+          grid-template-columns: 1fr;
         }
 
         .account-heading h1 {
-            font-family: "Playfair Display", serif;
-            color: #31543b;
-            font-size: 42px;
+          font-size: 34px;
         }
+      }
 
-        .account-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 25px;
-        }
-
-        .account-card {
-            background: #f8f4e9;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
-
-        .account-card h2 {
-            color: #31543b;
-            margin-bottom: 20px;
-        }
-
-        .account-name {
-            font-family: "Playfair Display", serif;
-            font-size: 30px;
-            color: #31543b;
-        }
-
-        .account-email {
-            color: #66705f;
-            margin-top: 8px;
+      @media (max-width: 500px) {
+        .account-page {
+          padding: 40px 15px;
         }
 
         .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
+          grid-template-columns: 1fr;
         }
-
-        .stat-box {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-        }
-
-        .stat-box strong {
-            display: block;
-            font-size: 24px;
-            color: #31543b;
-            margin-bottom: 5px;
-        }
-
-        .stat-box span {
-            color: #66705f;
-            font-size: 14px;
-        }
-
-        .order-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #e1e5db;
-        }
-
-        .order-card h3 {
-            color: #31543b;
-            margin-bottom: 8px;
-        }
-
-        .order-card p {
-            color: #66705f;
-            margin-bottom: 5px;
-        }
-
-        .account-buttons {
-            margin-top: 25px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .account-buttons a,
-        .logout-btn {
-            padding: 12px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .shop-btn {
-            background: #31543b;
-            color: white;
-        }
-
-        .cart-btn {
-            background: white;
-            color: #31543b;
-            border: 1px solid #31543b !important;
-        }
-
-        .logout-btn {
-            background: #b85c5c;
-            color: white;
-        }
-
-        @media (max-width: 800px) {
-
-            .account-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .account-heading h1 {
-                font-size: 34px;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .account-page {
-                padding: 40px 15px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <header>
+      <nav class="navbar">
+        <a href="../index.html" class="logo"> plant<span>ify</span> </a>
 
-        <nav class="navbar">
+        <button class="menu-button" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
-            <a href="../index.html" class="logo">
-                plant<span>ify</span>
-            </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="care.html">Plant Care</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
 
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <a href="cart.html" class="nav-cart">
+          <span>Cart</span>
 
-            <ul class="nav-links" id="navLinks">
+          <b id="cartCount">0</b>
+        </a>
 
-                <li>
-                    <a href="../index.html">Home</a>
-                </li>
+        <div class="profile">
+          <a
+            href="account.html"
+            class="profile-button"
+            style="text-decoration: none"
+          >
+            <i class="fa-regular fa-circle-user"></i>
+            <span id="profileName">Account</span>
+          </a>
 
-                <li>
-                    <a href="shop.html">Shop</a>
-                </li>
+          <div class="profile-menu" id="profileMenu">
+            <p id="profileUserName">Welcome</p>
 
-                <li>
-                    <a href="care.html">Plant Care</a>
-                </li>
+            <a href="account.html"> My Account </a>
 
-                <li>
-                    <a href="about.html">About</a>
-                </li>
+            <a href="login.html" id="profileLogin"> Login </a>
 
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-
-                <li>
-                    <a href="account.html">My Account</a>
-                </li>
-
-            </ul>
-
-            <a href="cart.html" class="nav-cart">
-                Bag <span id="cartCount">0</span>
-            </a>
-
-        </nav>
-
+            <button id="profileLogout" onclick="logoutUser()">Logout</button>
+          </div>
+        </div>
+      </nav>
     </header>
-
-
     <main class="account-page">
+      <div class="account-heading">
+        <p>MY PLANTIFY ACCOUNT</p>
 
-        <div class="account-heading">
+        <h1>Welcome back, <span id="accountName"></span></h1>
+      </div>
 
-            <p>MY PLANTIFY ACCOUNT</p>
+      <div class="account-grid">
+        <div class="account-card">
+          <h2>Account Details</h2>
 
-            <h1>
-                Welcome back, <span id="accountName"></span>
-            </h1>
+          <div class="account-name">
+            <span id="accountName"></span>
+          </div>
 
-        </div>
+          <div class="account-email">
+            <span id="accountEmail"></span>
+          </div>
 
+          <div class="stats">
+            <div class="stat-box">
+              <strong id="accountCartCount"> 0 </strong>
 
-        <div class="account-grid">
-
-
-            <div class="account-card">
-
-                <h2>Account Details</h2>
-
-                <div class="account-name">
-                    <span id="accountName"></span>
-                </div>
-
-                <div class="account-email">
-                    <span id="accountEmail"></span>
-                </div>
-
-
-                <div class="stats">
-
-                    <div class="stat-box">
-
-                        <strong id="accountCartCount">
-                            0
-                        </strong>
-
-                        <span>
-                            Items in Bag
-                        </span>
-
-                    </div>
-
-
-                    <div class="stat-box">
-
-                        <strong id="accountCartTotal">
-                            ₹0
-                        </strong>
-
-                        <span>
-                            Bag Total
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="account-buttons">
-
-                    <a
-                        href="shop.html"
-                        class="shop-btn"
-                    >
-                        Continue Shopping
-                    </a>
-
-                    <a
-                        href="cart.html"
-                        class="cart-btn"
-                    >
-                        View Bag
-                    </a>
-
-                    <button
-                        onclick="logoutUser()"
-                        class="logout-btn"
-                    >
-                        Logout
-                    </button>
-
-                </div>
-
+              <span> Items in Bag </span>
             </div>
 
+            <div class="stat-box">
+              <strong id="accountCartTotal"> ₹0 </strong>
 
-            <div class="account-card">
-
-                <h2>My Orders</h2>
-
-                <div id="orderList"></div>
-
+              <span> Bag Total </span>
             </div>
+          </div>
+
+          <div class="account-buttons">
+            <a href="shop.html" class="shop-btn"> Continue Shopping </a>
+
+            <a href="cart.html" class="cart-btn"> View Bag </a>
+
+            <button onclick="logoutUser()" class="logout-btn">Logout</button>
+          </div>
         </div>
 
+        <div class="account-card">
+          <h2>My Orders</h2>
+
+          <div id="orderList"></div>
+        </div>
+      </div>
     </main>
 
-
     <script src="../script.js"></script>
-
-</body>
-
+  </body>
 </html>
